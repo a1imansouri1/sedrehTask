@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { Icon } from '@iconify/react';
 import closeIcon from '@iconify/icons-material-symbols/close';
 
-const SubTaskInput = ({ subTask, setSubTask, index }) => {
+const SubTaskInput = ({ subTask, setSubTask, index, removeNewSubTask }) => {
 
     const subTaskChange = (e, index) => {
         const { name, value } = e.target
@@ -18,14 +18,14 @@ const SubTaskInput = ({ subTask, setSubTask, index }) => {
             <input
                 className='mb-1 h-[30px] pl-4 w-full text-xs leading-5 bg-gray-800 rounded-[5px] border-2 border-gray-700'
                 type="text" placeHolder='e.g. Make coffee'
-                value={subTask.subTaskKey}
+                // value={subTask.subTaskKey}
                 name='subTaskKey'
                 onChange={e => {
                     subTaskChange(e, index)
                     // e.preventDefault()
                 }}
             />
-            <Icon icon={closeIcon} color='rgb(156 163 175)' className='ml-1.5' />
+            <Icon onClick={removeNewSubTask} icon={closeIcon} color='rgb(156 163 175)' className='ml-1.5 cursor-pointer' />
 
 
         </div>

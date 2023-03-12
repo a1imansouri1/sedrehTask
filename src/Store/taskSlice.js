@@ -25,7 +25,9 @@ const taskSlice = createSlice({
 
             state.taskItems.push({
                 title: newItem.title,
+                description: newItem.description,
                 subTask: newItem.subTask,
+                status: newItem.status,
             })
 
             setItemFunc(

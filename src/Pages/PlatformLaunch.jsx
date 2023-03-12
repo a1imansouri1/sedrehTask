@@ -7,7 +7,6 @@ import { useSelector } from 'react-redux'
 const PlatformLaunch = () => {
 
   const taskItems = useSelector(state => state.task.taskItems)
-
   return (
     <>
       <Header title='Platform Launch'>
@@ -17,7 +16,7 @@ const PlatformLaunch = () => {
             taskItems.map(item => {
               const subTaskArray = item.subTask
               return (
-                <Task title={item.title} subTaskNumber={'0 of '+ subTaskArray.length + ' subtasks'} />
+                <Task  title={item.title} description={item.description} subTask={item.subTask} status={item.status}  subTaskNumber={'0 of '+ subTaskArray.length + ' subtasks'} />
               )
             })
           }

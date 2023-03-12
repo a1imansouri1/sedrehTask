@@ -14,15 +14,25 @@ const AddNewTask = ({ closeModal }) => {
         { subTaskKey: '' }
     ])
 
+    const [status, setStatus] = useState('Todo')
+
+    const [description, setDescription] = useState('')
+
     const addNewSubTask = () => {
         setSubTask([...subTask, { subTaskKey: '' }])
+    }
+    const removeNewSubTask = (index) => {
+        const list = [...subTask]
+        list.splice(index, 1)
+        setSubTask(list)
     }
 
     const dispatch = useDispatch()
 
     const addNewTask = () => {
-        dispatch(taskActions.addNewTask({ title, subTask }))
+        dispatch(taskActions.addNewTask({ title, subTask, status, description }))
     }
+
 
     return (
         <div className='fixed z-10 left-0 top-0 w-full h-full'>
@@ -38,6 +48,8 @@ const AddNewTask = ({ closeModal }) => {
 
                 <label className='text-xs'>Description</label>
                 <textarea cols='30' rows='4'
+                    value={description}
+                    onChange={e => setDescription(e.target.value)}
                     placeHolder="e.g. It's always good to take a break. This 15 minutes break will recharge the batteries a little"
                     className='text-xs leading-5 p-4 rounded-[5px] w-full bg-gray-800 border-2 border-gray-700'
                 >
@@ -47,7 +59,7 @@ const AddNewTask = ({ closeModal }) => {
                 {
                     subTask.map((item, index) => {
                         return (
-                            <SubTaskInput subTask={subTask} setSubTask={setSubTask} index={index} />
+                            <SubTaskInput subTask={subTask} setSubTask={setSubTask} index={index} removeNewSubTask={removeNewSubTask} />
                         )
                     })
                 }
@@ -58,10 +70,13 @@ const AddNewTask = ({ closeModal }) => {
                 >+Add New Subtask</button>
 
                 <label className='block text-xs mt-[15px] mb-1'>Status</label>
-                <select className='text-xs pl-3 h-[30px] cursor-pointer w-full rounded-[5px] bg-gray-800 border-2 border-gray-700 text-gray-400'>
-                    <option value="female">Todo</option>
-                    <option value="male">Doing</option>
-                    <option value="other">Done</option>
+                <select
+                    value={status}
+                    onChange={e => setStatus(e.target.value)}
+                    id='status' className='text-xs pl-3 h-[30px] cursor-pointer w-full rounded-[5px] bg-gray-800 border-2 border-gray-700 text-gray-400'>
+                    <option value="Todo" selected>Todo</option>
+                    <option value="Doing">Doing</option>
+                    <option value="Done">Done</option>
                 </select>
 
                 <button
