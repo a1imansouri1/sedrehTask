@@ -1,9 +1,9 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import addNewTaskSlice from "./addNewTaskSlice"; 
+import taskSlice from "./taskSlice"; 
 
 const store = configureStore({
     reducer: {
-        addNewTask: cartSlice.reducer,
+        task: taskSlice.reducer,
     },
 })
 

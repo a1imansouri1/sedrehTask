@@ -2,18 +2,11 @@ import React, { useState } from 'react'
 import Header from '../Components/Header/Header'
 import Task from '../Components/Task/Task'
 import Status from '../Components/Status/Status'
+import { useSelector } from 'react-redux'
 
 const PlatformLaunch = () => {
 
-  const [task, setTask] = useState([
-    { title: 'Build UI for onboarding flow', description: '0 of 3 subtasks' }
-  ])
-
-  const addTask = (task1) => {
-    const description = 'abc'
-    const newTask = { description, ...task1 }
-    setTask([...task, newTask])
-  }
+  const taskItems = useSelector(state => state.task.taskItems)
 
   return (
     <>
@@ -21,9 +14,10 @@ const PlatformLaunch = () => {
         <div className='ml-[300px]'>
           <Status title='TODO' color='rgb(34 211 238)' toDoQuant='(1)' />
           {
-            task.map(item => {
+            taskItems.map(item => {
+              const subTaskArray = item.subTask
               return (
-                <Task title={item.title} description={item.description} />
+                <Task title={item.title} subTaskNumber={'0 of '+ subTaskArray.length + ' subtasks'} />
               )
             })
           }
