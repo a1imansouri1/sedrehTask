@@ -1,7 +1,9 @@
 import React from 'react'
 import { useForm } from "react-hook-form";
-import TaskInput from '../Input/TaskInput';
 import '../../styles/styles.css'
+
+import { Icon } from '@iconify/react';
+import overflowMenuVertical from '@iconify/icons-carbon/overflow-menu-vertical';
 
 
 const ViewTask = ({ closeModal }) => {
@@ -14,19 +16,30 @@ const ViewTask = ({ closeModal }) => {
             </div>
 
             <div className='absolute w-[400px] top-[150px] left-[500px] p-5 box-border rounded-[10px] border-none bg-gray-800'>
-                <h1 className='text-left font-bold mb-[10px]'>Add New Task</h1>
-                <TaskInput title='Title' placeHolder='e.g. Take coffee break' />
+                <div className='flex'>
+                    <h1 className='text-left font-bold mb-[20px]'>Research pricing points of various competitors and trial different business models</h1>
+                    <Icon icon={overflowMenuVertical} color="white" height='45' />
+                </div>
 
-                <label className='text-xs'>Description</label>
-                <textarea cols='30' rows='4'
-                    placeHolder="e.g. It's always good to take a break. This 15 minutes break will recharge the batteries a little"
-                    className='text-xs leading-5 p-4 rounded-[5px] w-full bg-gray-800 border-2 border-gray-700'
-                >
-                </textarea>
+                <p className='text-[12px]  text-gray-400'>
+                    We know what we're planning to build for version one. Now we need to finalise the first pricing model we'll use. Keep iterating the subtasks until we have a coherent proposition.
+                </p>
 
-                <TaskInput title='Subtasks' placeHolder='e.g. Make coffee' />
-                <TaskInput title='' placeHolder='e.g. Make coffee' />
-                <button className="font-bold text-[10px] h-[40px] mt-3 text-gray-200 w-full align-middle rounded-full  text-violet-500 bg-white hover:bg-violet-500 hover:text-white duration:300" >+Add New Subtask</button>
+                <label className='block mb-3 mt-3 text-xs'>
+                    Subtasks (2 of 3)
+                </label>
+                <div className='mb-2 flex gap-1 items-center p-3 box-border rounded-[10px] border-none bg-gray-900'>
+                    <input className='w-4 h-4 cursor-pointer' type="checkbox" />
+                    <label className='text-[10px]'>Research competitor pricing and business models</label>
+                </div>
+                <div className='mb-2 flex gap-1 items-center p-3 box-border rounded-[10px] border-none bg-gray-900'>
+                    <input className='w-4 h-4 cursor-pointer' type="checkbox" placeholder='Outline a business model that works for our solution' />
+                    <label className='text-[10px]'>Outline a business model that works for our solution</label>
+                </div>
+                <div className='mb-2 flex gap-1 items-center p-3 box-border rounded-[10px] border-none bg-gray-900'>
+                    <input className='w-5 h-5 cursor-pointer' type="checkbox" placeholder='Outline a business model that works for our solution' />
+                    <label className='text-[10px]'>Talk to potential customers about our proposed solution and ask for fair price expentancy</label>
+                </div>
 
                 <label className='block text-xs mt-[15px] mb-1'>Status</label>
                 <select className='text-xs pl-3 h-[30px] cursor-pointer w-full rounded-[5px] bg-gray-800 border-2 border-gray-700 text-gray-400'>
@@ -34,9 +47,6 @@ const ViewTask = ({ closeModal }) => {
                     <option value="male">Doing</option>
                     <option value="other">Done</option>
                 </select>
-
-                <button className="font-bold text-[10px] h-[40px] mt-3 text-gray-200 w-full align-middle rounded-full  hover:text-violet-500 hover:bg-white bg-violet-500 text-white duration:300" >Create Task</button>
-
             </div>
 
         </div >

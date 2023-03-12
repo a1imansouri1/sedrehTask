@@ -3,8 +3,11 @@ import SideBarButtons from './SideBarButtons'
 
 import { Icon } from '@iconify/react';
 import threeLineVertical from '@iconify/icons-akar-icons/three-line-vertical';
-import { NavLink, Link, useNavigate } from 'react-router-dom'
+import lightMode from '@iconify/icons-material-symbols/light-mode';
+import toggleOn from '@iconify/icons-material-symbols/toggle-on';
+import moonFill from '@iconify/icons-akar-icons/moon-fill';
 
+import { NavLink, Link, useNavigate } from 'react-router-dom'
 
 const SideBar = () => {
 
@@ -70,6 +73,14 @@ const SideBar = () => {
 
                 </div>
             </div>
+
+            <div className='flex w-full gap-[30px] justify-center items-center'>
+                <Icon icon={lightMode} color="white" />
+                <Icon icon={toggleOn} color="rgb(139 92 246)" height='25px' />
+                <Icon icon={moonFill} color="white" />
+            </div>
+
+
 
         </div>
     )
