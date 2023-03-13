@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../../styles/styles.css'
+import SubTaskCheckBox from '../Inputs/subTaskCheckBox';
 
 import { Icon } from '@iconify/react';
 import overflowMenuVertical from '@iconify/icons-carbon/overflow-menu-vertical';
 
 
 const ViewTask = ({ closeModal, title, description, subTask, status }) => {
+
+    const [checkedSubTaskNum, setCheckedSubTaskNum] = useState(0)
 
     return (
         <div className='fixed z-10 left-0 top-0 w-full h-full'>
@@ -27,20 +30,14 @@ const ViewTask = ({ closeModal, title, description, subTask, status }) => {
 
                 <label className='block mb-3 mt-3 text-xs'>
 
-                    Subtasks 2 of {subTask.length}
+                    Subtasks {checkedSubTaskNum} of {subTask.length}
 
                 </label>
 
                 {
                     subTask.map(item => {
                         return (
-
-                            < div className='mb-2 flex gap-1 items-center p-3 box-border rounded-[10px] border-none bg-gray-900'>
-                                <input className='w-4 h-4 cursor-pointer' type="checkbox" />
-                                <label className='text-[10px]'>
-                                    {item.subTaskKey}
-                                </label>
-                            </div>
+                            <SubTaskCheckBox subTaskKeyValue={item.subTaskKey} checkedSubTaskNum={checkedSubTaskNum} setCheckedSubTaskNum={setCheckedSubTaskNum} />
                         )
                     })
                 }
