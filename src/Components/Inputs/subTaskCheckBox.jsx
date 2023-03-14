@@ -1,34 +1,38 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { taskActions } from '../../Store/taskSlice'
+import { Icon } from '@iconify/react';
+import checkBox from '@iconify/icons-material-symbols/check-box';
+import checkBoxOutlineBlank from '@iconify/icons-material-symbols/check-box-outline-blank';
 
-const SubTaskCheckBox = ({ subTaskKeyValue, checkedSubTaskNum, setCheckedSubTaskNum }) => {
+const SubTaskCheckBox = ({ index1, index, subTaskStatusKeyValue, subTaskKeyValue }) => {
 
-    const [checkPos, setCheckPos] = useState(false)
-
-    const checked = (e) => {
-        const checked1 = e.target.checked
-        setCheckPos(checked1)
-        if (!checkPos) {
-            setCheckedSubTaskNum(checkedSubTaskNum+1)
-        } else if (checkedSubTaskNum > 0) {
-            setCheckedSubTaskNum(checkedSubTaskNum-1)
-        }
+    const dispatch = useDispatch()
+    const checked = () => {
+        dispatch(taskActions.checked({ index1, index }))
     }
-
+    const notChecked = () => {
+        dispatch(taskActions.notChecked({ index1, index }))
+    }
 
     return (
         < div className='mb-2 flex gap-1 items-center p-3 box-border rounded-[10px] border-none bg-gray-900'>
-            <input
-                onChange={checked}
-                className='w-4 h-4 cursor-pointer mr-3' type="checkbox" />
-            <label
-                className={
-                    checkPos ?
-                        'text-[10px] line-through text-gray-400'
-                        :
-                        'text-[10px]'
-                }>
-                {subTaskKeyValue}
-            </label>
+            {
+                !subTaskStatusKeyValue ?
+                    <div onClick={checked} className='flex gap-[10px] cursor-pointer'>
+                        <Icon icon={checkBoxOutlineBlank} />
+                        <p className='text-[10px]'>{subTaskKeyValue}</p>
+                    </div>
+                    :
+                    <div onClick={notChecked} className='flex gap-[10px] cursor-pointer'>
+                        <Icon icon={checkBox} color="#8b5cf6" />
+                        <p className='text-[10px] line-through text-gray-400'> {subTaskKeyValue}</p>
+                    </div>
+            }
+
+            <p>
+
+            </p>
         </div>
     )
 }

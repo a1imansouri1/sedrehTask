@@ -7,10 +7,12 @@ import Routers from '../../routes/Routers'
 const Layout = ({ title }) => {
   return (
     <div>
+      <Header title='Platform Launch' />
+      
 
       <SideBar />
-      
-      <div className='text-white'>
+
+      <div className='h-full w-10/12 mt-[128px] float-right bg-stone-900 text-white'>
         <Routers />
       </div>
 

@@ -4,14 +4,15 @@ import { Icon } from '@iconify/react';
 import closeIcon from '@iconify/icons-material-symbols/close';
 
 const SubTaskInput = ({ subTask, setSubTask, index, removeNewSubTask }) => {
-
+    
     const subTaskChange = (e, index) => {
         const { name, value } = e.target
+        const subTaskStatusKey = 'subTaskStatusKey'
         const list = [...subTask]
         list[index][name] = value
+        list[index][subTaskStatusKey] = false
         setSubTask(list)
     }
-
 
     return (
         <div className='flex items-center'>
@@ -22,11 +23,9 @@ const SubTaskInput = ({ subTask, setSubTask, index, removeNewSubTask }) => {
                 name='subTaskKey'
                 onChange={e => {
                     subTaskChange(e, index)
-                    // e.preventDefault()
                 }}
             />
             <Icon onClick={removeNewSubTask} icon={closeIcon} color='rgb(156 163 175)' className='ml-1.5 cursor-pointer' />
-
 
         </div>
     )

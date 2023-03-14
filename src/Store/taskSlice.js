@@ -5,21 +5,12 @@ const items =
         ? JSON.parse(localStorage.getItem("taskItems"))
         : [];
 
-const newItemCheckedSubTaskNumItems =
-    localStorage.getItem("newItemCheckedSubTaskNumItems") !== null
-        ? JSON.parse(localStorage.getItem("newItemCheckedSubTaskNumItems"))
-        : [];
-
 const setItemFunc = (item) => {
     localStorage.setItem("taskItems", JSON.stringify(item));
-};
-const setItemFuncnewItemCheckedSubTaskNumItems = (item) => {
-    localStorage.setItem("newItemCheckedSubTaskNumItems", JSON.stringify(newItemCheckedSubTaskNumItems));
 };
 
 const initialState = {
     taskItems: items,
-    newItemCheckedSubTaskNumItems: newItemCheckedSubTaskNumItems,
 }
 
 const taskSlice = createSlice({
@@ -37,7 +28,6 @@ const taskSlice = createSlice({
                 description: newItem.description,
                 subTask: newItem.subTask,
                 status: newItem.status,
-                checkedSubTaskNum: newItem.checkedSubTaskNum,
             })
 
             setItemFunc(
@@ -45,21 +35,35 @@ const taskSlice = createSlice({
             )
 
         },
-        checkedSubTaskNum(state, action) {
-            const newItemCheckedSubTaskNum = action.payload
 
-            state.taskItems.push({
-                title: newItemCheckedSubTaskNum.title,
-                description: newItemCheckedSubTaskNum.description,
-                subTask: newItemCheckedSubTaskNum.subTask,
-                status: newItemCheckedSubTaskNum.status,
-                checkedSubTaskNum: newItemCheckedSubTaskNum.checkedSubTaskNum,
-            })
 
-            setItemFuncnewItemCheckedSubTaskNumItems(
-                state.newItemCheckedSubTaskNumItems.map((item) => item)
-            )
+        checked(state, action) {
+
+            const index1 = action.payload.index1
+            const index = action.payload.index
+            const abc = state.taskItems
+            const abcd = abc[index1].subTask
+            abcd[index].subTaskStatusKey = true
+            const abcde = abc.map((item, index2) => index2 == index1 ? { ...item, subTask: abcd } : item)
+            
+            setItemFunc(abcde)
+
         },
+
+        notChecked(state, action) {
+
+            const index1 = action.payload.index1
+            const index = action.payload.index
+            const abc = state.taskItems
+            const abcd = abc[index1].subTask
+            abcd[index].subTaskStatusKey = false
+            const abcde = abc.map((item, index2) => index2 == index1 ? { ...item, subTask: abcd } : item)
+
+            setItemFunc(abcde)
+
+        },
+
+
 
         subTasksNumber(state, action) {
 
