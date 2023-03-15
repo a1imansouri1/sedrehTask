@@ -5,7 +5,7 @@ const MarkettingPlan = () => {
   return (
     <>
       <Header title='Marketting Plan'>
-        <div className='ml-[300px]'>
+        <div className='mt-[20px] ml-[20px]'>
           Marketting Plan
         </div>
       </Header>

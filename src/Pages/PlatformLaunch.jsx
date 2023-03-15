@@ -7,14 +7,17 @@ import ToDOTaskItems from '../Components/StatusTaskItems/ToDOTaskItems/ToDOTaskI
 const PlatformLaunch = () => {
 
   return (
-    <div className='grid grid-cols-4 gap-4' >
 
-      <ToDOTaskItems />
-      <DoingTaskItems />
-      <DoneTaskItems />
+    <Header title='Platform Launch'>
 
-    </div>
+      <div className='grid grid-cols-4 gap-4 mt-[20px] ml-[20px]' >
+        <ToDOTaskItems />
+        <DoingTaskItems />
+        <DoneTaskItems />
 
+      </div>
+
+    </Header>
 
 
   )

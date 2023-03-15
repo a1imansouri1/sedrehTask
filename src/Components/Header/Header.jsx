@@ -12,7 +12,7 @@ const Header = ({ title, children }) => {
 
     return (
 
-        <div>
+        <div className='flex'>
             <div className='lg:right-0 fixed mb-5 flex items-center justify-between border-b-2 border-b-violet-300 mt-0 h-32 w-10/12 bg-gray-800 text-white'>
                 <h1 className="text-2xl font-bold text-gray-200 ml-10">{title}</h1>
                 <div className='flex items-center mr-10'>
@@ -28,9 +28,9 @@ const Header = ({ title, children }) => {
                     <Icon icon={overflowMenuVertical} color="white" height='35' />
                 </div>
             </div>
-            {/* <div className='h-full bg-stone-900'>
+            <div className='h-full mt-[128px] bg-stone-900'>
                 {children}
-            </div> */}
+            </div>
 
         </div>
     )

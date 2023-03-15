@@ -14,7 +14,7 @@ const Task = ({ index1, title, description, subTask, status }) => {
 
     return (
 
-        <div className='ml-[20px] mr-[20px]'>
+        <div className='mr-[20px]'>
 
             <div
                 className="p-6 mt-5 mb-5 max-w-sm bg-gray-800 rounded-xl cursor-pointer shadow-lg flex-row hover:translate-y-2 duration-300"

@@ -5,7 +5,7 @@ const CreateNewBoard = () => {
   return (
     <>
       <Header title='Create New Board'>
-        <div className='ml-[300px]'>
+        <div className='mt-[20px] ml-[20px]'>
           Create New Board
         </div>
       </Header>
