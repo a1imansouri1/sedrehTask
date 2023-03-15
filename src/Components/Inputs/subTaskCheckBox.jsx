@@ -7,39 +7,31 @@ import checkBoxOutlineBlank from '@iconify/icons-material-symbols/check-box-outl
 
 const SubTaskCheckBox = ({ status, index1, index, subTaskStatusKeyValue, subTaskKeyValue }) => {
 
-    const dispatch1 = useDispatch()
-    const dispatch2 = useDispatch()
-    const dispatch3 = useDispatch()
-    // const checked = () => {
-    //     dispatch(taskActions.checked({ index1, index }, { index1, index }, { index1, index }))
-    // }
-    // const notChecked = () => {
-    //     dispatch(taskActions.notChecked({ index1, index }))
-    // }
-
+    const dispatch = useDispatch()
+   
     const checkedTodo = () => {
-        dispatch1(taskActions.checkedTodo({ index1, index }))
+        dispatch(taskActions.checkedTodo({ index1, index }))
         console.log(status)
     }
     const checkedDoing = () => {
-        dispatch2(taskActions.checkedDoing({ index1, index }))
+        dispatch(taskActions.checkedDoing({ index1, index }))
         console.log(status)
     }
     const checkedDone = () => {
-        dispatch3(taskActions.checkedDone({ index1, index }))
+        dispatch(taskActions.checkedDone({ index1, index }))
         console.log(status)
     }
 
     const notCheckedTodo = () => {
-        dispatch1(taskActions.notCheckedTodo({ index1, index }))
+        dispatch(taskActions.notCheckedTodo({ index1, index }))
         console.log(status)
     }
     const notCheckedDoing = () => {
-        dispatch2(taskActions.notCheckedDoing({ index1, index }))
+        dispatch(taskActions.notCheckedDoing({ index1, index }))
         console.log(status)
     }
     const notCheckedDone = () => {
-        dispatch3(taskActions.notCheckedDone({ index1, index }))
+        dispatch(taskActions.notCheckedDone({ index1, index }))
         console.log(status)
     }
 
