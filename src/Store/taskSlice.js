@@ -68,7 +68,7 @@ const taskSlice = createSlice({
 
             const index1 = action.payload.index1
             const index = action.payload.index
-            const abc = state.taskItems
+            const abc = state.toDOTaskItems
             const abcd = abc[index1].subTask
             abcd[index].subTaskStatusKey = true
 
@@ -84,7 +84,7 @@ const taskSlice = createSlice({
 
             const index1 = action.payload.index1
             const index = action.payload.index
-            const abc = state.taskItems
+            const abc = state.doingTaskItems
             const abcd = abc[index1].subTask
             abcd[index].subTaskStatusKey = true
 
@@ -100,9 +100,57 @@ const taskSlice = createSlice({
 
             const index1 = action.payload.index1
             const index = action.payload.index
-            const abc = state.taskItems
+            const abc = state.doneTaskItems
             const abcd = abc[index1].subTask
             abcd[index].subTaskStatusKey = true
+
+            const abcde = abc.map((item, index2) => index2 == index1 ? { ...item, subTask: abcd } : item)
+            const x = abcde.filter(item => item.status == 'Done')
+            state.doneTaskItems = x
+            localStorage.setItem("doneTaskItems", JSON.stringify(
+                state.doneTaskItems.map(item => item)
+            ));
+        },
+
+        notCheckedTodo(state, action) {
+
+            const index1 = action.payload.index1
+            const index = action.payload.index
+            const abc = state.toDOTaskItems
+            const abcd = abc[index1].subTask
+            abcd[index].subTaskStatusKey = false
+
+            const abcde = abc.map((item, index2) => index2 == index1 ? { ...item, subTask: abcd } : item)
+            const x = abcde.filter(item => item.status == 'Todo')
+            state.toDOTaskItems = x
+            localStorage.setItem("toDOTaskItems", JSON.stringify(
+                state.toDOTaskItems.map(item => item)
+            ));
+        },
+
+        notCheckedDoing(state, action) {
+
+            const index1 = action.payload.index1
+            const index = action.payload.index
+            const abc = state.doingTaskItems
+            const abcd = abc[index1].subTask
+            abcd[index].subTaskStatusKey = false
+
+            const abcde = abc.map((item, index2) => index2 == index1 ? { ...item, subTask: abcd } : item)
+            const x = abcde.filter(item => item.status == 'Doing')
+            state.doingTaskItems = x
+            localStorage.setItem("doingTaskItems", JSON.stringify(
+                state.doingTaskItems.map(item => item)
+            ));
+        },
+
+        notCheckedDone(state, action) {
+
+            const index1 = action.payload.index1
+            const index = action.payload.index
+            const abc = state.doneTaskItems
+            const abcd = abc[index1].subTask
+            abcd[index].subTaskStatusKey = false
 
             const abcde = abc.map((item, index2) => index2 == index1 ? { ...item, subTask: abcd } : item)
             const x = abcde.filter(item => item.status == 'Done')

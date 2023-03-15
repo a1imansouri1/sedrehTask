@@ -37,7 +37,7 @@ const ViewTask = ({ index1, closeModal, title, description, subTask, status, che
                 {
                     subTask.map((item, index) => {
                         return (
-                            <SubTaskCheckBox key={index} index1={index1} index={index} subTask={subTask} subTaskKeyValue={item.subTaskKey} subTaskStatusKeyValue={item.subTaskStatusKey} checkedSubTaskNum={checkedSubTaskNum} />
+                            <SubTaskCheckBox status={status} key={index} index1={index1} index={index} subTask={subTask} subTaskKeyValue={item.subTaskKey} subTaskStatusKeyValue={item.subTaskStatusKey} checkedSubTaskNum={checkedSubTaskNum} />
                         )
                     })
                 }

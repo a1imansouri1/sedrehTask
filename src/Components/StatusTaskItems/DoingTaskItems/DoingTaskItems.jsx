@@ -10,7 +10,7 @@ const DoingTaskItems = () => {
     const doingTaskItems = useSelector(state => state.task.doingTaskItems)
     // const taskItems = useSelector(state => state.task.taskItems)
     // const doingTaskItems = taskItems.filter(item => item.status == 'Doing')
-
+    
     
     return (
         <div>
