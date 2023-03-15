@@ -160,9 +160,86 @@ const taskSlice = createSlice({
             ));
         },
 
-        subTasksNumber(state, action) {
+        toDoChangeStatus(state, action) {
 
-        }
+            const newItem = action.payload
+            state.toDOTaskItems.push({
+                title: newItem.title,
+                description: newItem.description,
+                subTask: newItem.subTask,
+                status: 'Todo',
+            })
+            const status = newItem.status
+            const indexx = newItem.indexx
+
+            const c = status == 'Doing' ?
+                state.doingTaskItems.splice(indexx, 1)
+                :
+                state.doneTaskItems.splice(indexx, 1)
+
+            state.taskItems = [...state.toDOTaskItems, ...state.doingTaskItems, ...state.doneTaskItems]
+
+            setItemFunc(
+                state.taskItems.map((item) => item)
+                , state.toDOTaskItems.map((item) => item),
+                state.doingTaskItems.map((item) => item),
+                state.doneTaskItems.map((item) => item),
+            )
+        },
+
+        doingChangeStatus(state, action) {
+
+            const newItem = action.payload
+            state.doingTaskItems.push({
+                title: newItem.title,
+                description: newItem.description,
+                subTask: newItem.subTask,
+                status: 'Doing',
+            })
+            const status = newItem.status
+            const indexx = newItem.indexx
+
+            const c = status == 'Todo' ?
+                state.toDOTaskItems.splice(indexx, 1)
+                :
+                state.doneTaskItems.splice(indexx, 1)
+
+            state.taskItems = [...state.toDOTaskItems, ...state.doingTaskItems, ...state.doneTaskItems]
+
+            setItemFunc(
+                state.taskItems.map((item) => item)
+                , state.toDOTaskItems.map((item) => item),
+                state.doingTaskItems.map((item) => item),
+                state.doneTaskItems.map((item) => item),
+            )
+        },
+
+        doneChangeStatus(state, action) {
+
+            const newItem = action.payload
+            state.doneTaskItems.push({
+                title: newItem.title,
+                description: newItem.description,
+                subTask: newItem.subTask,
+                status: 'Done',
+            })
+            const status = newItem.status
+            const indexx = newItem.indexx
+
+            const c = status == 'Todo' ?
+                state.toDOTaskItems.splice(indexx, 1)
+                :
+                state.doingTaskItems.splice(indexx, 1)
+
+            state.taskItems = [...state.toDOTaskItems, ...state.doingTaskItems, ...state.doneTaskItems]
+
+            setItemFunc(
+                state.taskItems.map((item) => item)
+                , state.toDOTaskItems.map((item) => item),
+                state.doingTaskItems.map((item) => item),
+                state.doneTaskItems.map((item) => item),
+            )
+        },
 
     }
 })
