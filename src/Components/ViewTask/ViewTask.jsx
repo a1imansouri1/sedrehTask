@@ -7,7 +7,7 @@ import overflowMenuVertical from '@iconify/icons-carbon/overflow-menu-vertical';
 
 const ViewTask = ({ index1, closeModal, title, description, subTask, status, checkedSubTaskNum }) => {
 
-    const [status1, setStatus1] = useState(status)
+    // const [status1, setStatus1] = useState(status)
 
 
     return (
@@ -37,7 +37,7 @@ const ViewTask = ({ index1, closeModal, title, description, subTask, status, che
                 {
                     subTask.map((item, index) => {
                         return (
-                            <SubTaskCheckBox index1={index1} index={index} subTask={subTask} subTaskKeyValue={item.subTaskKey} subTaskStatusKeyValue={item.subTaskStatusKey} checkedSubTaskNum={checkedSubTaskNum} />
+                            <SubTaskCheckBox key={index} index1={index1} index={index} subTask={subTask} subTaskKeyValue={item.subTaskKey} subTaskStatusKeyValue={item.subTaskStatusKey} checkedSubTaskNum={checkedSubTaskNum} />
                         )
                     })
                 }
@@ -49,8 +49,8 @@ const ViewTask = ({ index1, closeModal, title, description, subTask, status, che
                         (
 
                             <select
-                                value={status1}
-                                onChange={e => setStatus1(e.target.value)}
+                                // value={status1}
+                                // onChange={e => setStatus1(e.target.value)}
                                 className='text-xs pl-3 h-[30px] cursor-pointer w-full rounded-[5px] bg-gray-800 border-2 border-gray-700 text-gray-400'>
                                 <option value="Todo">Todo</option>
                                 <option value="Doing">Doing</option>
@@ -61,8 +61,8 @@ const ViewTask = ({ index1, closeModal, title, description, subTask, status, che
                         status == 'Doing' ?
                             (
                                 <select
-                                    value={status1}
-                                    onChange={e => setStatus1(e.target.value)}
+                                    // value={status1}
+                                    // onChange={e => setStatus1(e.target.value)}
                                     className='text-xs pl-3 h-[30px] cursor-pointer w-full rounded-[5px] bg-gray-800 border-2 border-gray-700 text-gray-400'>
                                     <option value="Doing">Doing</option>
                                     <option value="Todo">Todo</option>
@@ -72,8 +72,8 @@ const ViewTask = ({ index1, closeModal, title, description, subTask, status, che
                             :
                             (
                                 <select
-                                    value={status1}
-                                    onChange={e => setStatus1(e.target.value)}
+                                    // value={status1}
+                                    // onChange={e => setStatus1(e.target.value)}
                                     className='text-xs pl-3 h-[30px] cursor-pointer w-full rounded-[5px] bg-gray-800 border-2 border-gray-700 text-gray-400'>
                                     <option value="Done">Done</option>
                                     <option value="Todo">Todo</option>

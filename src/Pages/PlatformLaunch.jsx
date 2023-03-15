@@ -1,26 +1,21 @@
 import React, { useState } from 'react'
 import Header from '../Components/Header/Header'
-import Task from '../Components/Task/Task'
-import Status from '../Components/Status/Status'
-import { useSelector } from 'react-redux'
+import DoingTaskItems from '../Components/StatusTaskItems/DoingTaskItems/DoingTaskItems'
+import DoneTaskItems from '../Components/StatusTaskItems/DoneTaskItems/DoneTaskItems'
+import ToDOTaskItems from '../Components/StatusTaskItems/ToDOTaskItems/ToDOTaskItems'
 
 const PlatformLaunch = () => {
 
-  const taskItems = useSelector(state => state.task.taskItems)
-
   return (
+    <div className='grid grid-cols-4 gap-4' >
 
-    <div>
-      <Status title='TODO' color='rgb(34 211 238)' toDoQuant='(1)' />
-      {
-        taskItems.map((item, index) => {
-          const subTaskArray = item.subTask
-          return (
-            <Task index1={index} title={item.title} description={item.description} subTask={item.subTask} status={item.status} subTaskNumber={'0 of ' + subTaskArray.length + ' subtasks'} />
-          )
-        })
-      }
+      <ToDOTaskItems />
+      <DoingTaskItems />
+      <DoneTaskItems />
+
     </div>
+
+
 
   )
 }

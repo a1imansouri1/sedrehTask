@@ -11,7 +11,7 @@ const AddNewTask = ({ closeModal }) => {
     const [title, setTitle] = useState('')
 
     const [subTask, setSubTask] = useState([
-        { subTaskKey: '' }
+        { subTaskKey: '', subTaskStatusKey: '' }
     ])
 
     const [status, setStatus] = useState('Todo')
@@ -19,7 +19,7 @@ const AddNewTask = ({ closeModal }) => {
     const [description, setDescription] = useState('')
 
     const addNewSubTask = () => {
-        setSubTask([...subTask, { subTaskKey: '' }])
+        setSubTask([...subTask, { subTaskKey: '', subTaskStatusKey: '' }])
     }
     const removeNewSubTask = (index) => {
         const list = [...subTask]
@@ -50,7 +50,7 @@ const AddNewTask = ({ closeModal }) => {
                 <textarea cols='30' rows='4'
                     value={description}
                     onChange={e => setDescription(e.target.value)}
-                    placeHolder="e.g. It's always good to take a break. This 15 minutes break will recharge the batteries a little"
+                    placeholder="e.g. It's always good to take a break. This 15 minutes break will recharge the batteries a little"
                     className='text-xs leading-5 p-4 rounded-[5px] w-full bg-gray-800 border-2 border-gray-700'
                 >
                 </textarea>
@@ -59,7 +59,7 @@ const AddNewTask = ({ closeModal }) => {
                 {
                     subTask.map((item, index) => {
                         return (
-                            <SubTaskInput subTask={subTask} setSubTask={setSubTask} index={index} removeNewSubTask={removeNewSubTask} />
+                            <SubTaskInput key={index} subTask={subTask} setSubTask={setSubTask} index={index} removeNewSubTask={removeNewSubTask} />
                         )
                     })
                 }
@@ -74,7 +74,7 @@ const AddNewTask = ({ closeModal }) => {
                     value={status}
                     onChange={e => setStatus(e.target.value)}
                     id='status' className='text-xs pl-3 h-[30px] cursor-pointer w-full rounded-[5px] bg-gray-800 border-2 border-gray-700 text-gray-400'>
-                    <option value="Todo" selected>Todo</option>
+                    <option value="Todo">Todo</option>
                     <option value="Doing">Doing</option>
                     <option value="Done">Done</option>
                 </select>

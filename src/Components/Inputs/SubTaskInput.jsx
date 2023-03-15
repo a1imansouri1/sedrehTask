@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
-
 import { Icon } from '@iconify/react';
 import closeIcon from '@iconify/icons-material-symbols/close';
 
 const SubTaskInput = ({ subTask, setSubTask, index, removeNewSubTask }) => {
-    
+
     const subTaskChange = (e, index) => {
         const { name, value } = e.target
         const subTaskStatusKey = 'subTaskStatusKey'

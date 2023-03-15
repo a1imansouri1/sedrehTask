@@ -5,21 +5,43 @@ import { Icon } from '@iconify/react';
 import checkBox from '@iconify/icons-material-symbols/check-box';
 import checkBoxOutlineBlank from '@iconify/icons-material-symbols/check-box-outline-blank';
 
-const SubTaskCheckBox = ({ index1, index, subTaskStatusKeyValue, subTaskKeyValue }) => {
+const SubTaskCheckBox = ({ status, index1, index, subTaskStatusKeyValue, subTaskKeyValue }) => {
 
     const dispatch = useDispatch()
-    const checked = () => {
-        dispatch(taskActions.checked({ index1, index }))
-    }
+    // const checked = () => {
+    //     dispatch(taskActions.checked({ index1, index }, { index1, index }, { index1, index }))
+    // }
     const notChecked = () => {
         dispatch(taskActions.notChecked({ index1, index }))
+    }
+
+    const checkedTodo = () => {
+        dispatch(taskActions.checkedTodo({ index1, index }))
+    }
+    const checkedDoing = () => {
+        dispatch(taskActions.checkedDoing({ index1, index }))
+    }
+    const checkedDone = () => {
+        dispatch(taskActions.checkedDone({ index1, index }))
     }
 
     return (
         < div className='mb-2 flex gap-1 items-center p-3 box-border rounded-[10px] border-none bg-gray-900'>
             {
                 !subTaskStatusKeyValue ?
-                    <div onClick={checked} className='flex gap-[10px] cursor-pointer'>
+                    <div onClick={
+                        status == 'Todo' ?
+                            checkedTodo
+                            :
+                            status == 'Doing' ?
+                                checkedTodo
+                                :
+                                checkedTodo
+
+
+                    }
+
+                        className='flex gap-[10px] cursor-pointer'>
                         <Icon icon={checkBoxOutlineBlank} />
                         <p className='text-[10px]'>{subTaskKeyValue}</p>
                     </div>
