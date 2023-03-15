@@ -28,33 +28,49 @@ const SubTaskCheckBox = ({ status, index1, index, subTaskStatusKeyValue, subTask
     return (
         < div className='mb-2 flex gap-1 items-center p-3 box-border rounded-[10px] border-none bg-gray-900'>
             {
-                !subTaskStatusKeyValue ?
-                    <div onClick={
-                        status == 'Todo' ?
-                            checkedTodo
-                            :
-                            status == 'Doing' ?
-                                checkedTodo
-                                :
-                                checkedTodo
+                // status == 'Todo' ?
+                    (!subTaskStatusKeyValue ?
+                        <div onClick={checkedTodo}
+                            className='flex gap-[10px] cursor-pointer'>
+                            <Icon icon={checkBoxOutlineBlank} />
+                            <p className='text-[10px]'>{subTaskKeyValue}</p>
+                        </div>
+                        :
+                        <div onClick={notChecked} className='flex gap-[10px] cursor-pointer'>
+                            <Icon icon={checkBox} color="#8b5cf6" />
+                            <p className='text-[10px] line-through text-gray-400'> {subTaskKeyValue}</p>
+                        </div>)
+                    // :
+                    // status == 'Doing' ?
+                    //     (
+                    //         (!subTaskStatusKeyValue ?
+                    //             <div onClick={checkedDoing}
+                    //                 className='flex gap-[10px] cursor-pointer'>
+                    //                 <Icon icon={checkBoxOutlineBlank} />
+                    //                 <p className='text-[10px]'>{subTaskKeyValue}</p>
+                    //             </div>
+                    //             :
+                    //             <div onClick={notChecked} className='flex gap-[10px] cursor-pointer'>
+                    //                 <Icon icon={checkBox} color="#8b5cf6" />
+                    //                 <p className='text-[10px] line-through text-gray-400'> {subTaskKeyValue}</p>
+                    //             </div>)
+                    //     )
+                    //     :
+                    //     (
+                    //         (!subTaskStatusKeyValue ?
+                    //             <div onClick={checkedDone}
+                    //                 className='flex gap-[10px] cursor-pointer'>
+                    //                 <Icon icon={checkBoxOutlineBlank} />
+                    //                 <p className='text-[10px]'>{subTaskKeyValue}</p>
+                    //             </div>
+                    //             :
+                    //             <div onClick={notChecked} className='flex gap-[10px] cursor-pointer'>
+                    //                 <Icon icon={checkBox} color="#8b5cf6" />
+                    //                 <p className='text-[10px] line-through text-gray-400'> {subTaskKeyValue}</p>
+                    //             </div>)
+                    //     )
 
-
-                    }
-
-                        className='flex gap-[10px] cursor-pointer'>
-                        <Icon icon={checkBoxOutlineBlank} />
-                        <p className='text-[10px]'>{subTaskKeyValue}</p>
-                    </div>
-                    :
-                    <div onClick={notChecked} className='flex gap-[10px] cursor-pointer'>
-                        <Icon icon={checkBox} color="#8b5cf6" />
-                        <p className='text-[10px] line-through text-gray-400'> {subTaskKeyValue}</p>
-                    </div>
             }
-
-            <p>
-
-            </p>
         </div>
     )
 }
