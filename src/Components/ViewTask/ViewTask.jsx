@@ -33,24 +33,7 @@ const ViewTask = ({ index1, closeModal, title, description, subTask, status, che
             }))
         }
     }
-    const doingChangeStatus = (e) => {
-        const status = e.target.value
-        if (status == 'Doing') {
-            dispatch(taskActions.doingChangeStatus({
-                title, description, subTask, status,
-                index1
-            }))
-        }
-    }
-    const doneChangeStatus = (e) => {
-        const status = e.target.value
-        if (status == 'Done') {
-            dispatch(taskActions.doneChangeStatus({
-                title, description, subTask, status,
-                index1
-            }))
-        }
-    }
+  
 
     return (
         <div className='fixed z-10 left-0 top-0 w-full h-full'>

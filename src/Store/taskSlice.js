@@ -53,6 +53,7 @@ const taskSlice = createSlice({
             state.toDOTaskItems = state.taskItems.filter(item => item.status == 'Todo')
             state.doingTaskItems = state.taskItems.filter(item => item.status == 'Doing')
             state.doneTaskItems = state.taskItems.filter(item => item.status == 'Done')
+            state.taskItems = [...state.toDOTaskItems, ...state.doingTaskItems, ...state.doneTaskItems]
 
             setItemFunc(
                 state.taskItems.map((item) => item)
