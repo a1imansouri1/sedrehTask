@@ -161,22 +161,58 @@ const taskSlice = createSlice({
             ));
         },
 
-        toDoChangeStatus(state, action) {
+        toDoChangeStatusDoing(state, action) {
 
-            const newItem = action.payload
+            // const newItem = action.payload
+            // const status = newItem.status
+            // const indexx = newItem.indexx
+
             state.toDOTaskItems.push({
-                title: newItem.title,
-                description: newItem.description,
-                subTask: newItem.subTask,
+                title: action.payload.title,
+                description: action.payload.description,
+                subTask: action.payload.subTask,
                 status: 'Todo',
             })
-            const status = newItem.status
-            const indexx = newItem.indexx
 
-            const c = status == 'Doing' ?
-                state.doingTaskItems.splice(indexx, 1)
-                :
-                state.doneTaskItems.splice(indexx, 1)
+
+            // if (status == 'Doing') {
+                // const a = 
+                state.doingTaskItems.splice(Number(action.payload.index1), 1)
+                // console.log(a)
+            // } else if (status == 'Done') {
+            //     state.doneTaskItems.splice(indexx, 1)
+            // }
+
+            state.taskItems = [...state.toDOTaskItems, ...state.doingTaskItems, ...state.doneTaskItems]
+
+            setItemFunc(
+                state.taskItems.map((item) => item)
+                , state.toDOTaskItems.map((item) => item),
+                state.doingTaskItems.map((item) => item),
+                state.doneTaskItems.map((item) => item),
+            )
+        },
+        toDoChangeStatusDone(state, action) {
+
+            // const newItem = action.payload
+            // const status = newItem.status
+            // const indexx = newItem.indexx
+
+            state.toDOTaskItems.push({
+                title: action.payload.title,
+                description: action.payload.description,
+                subTask: action.payload.subTask,
+                status: 'Todo',
+            })
+
+
+            // if (status == 'Doing') {
+                // const a = 
+                // state.doingTaskItems.splice(indexx, 1)
+                // console.log(a)
+            // } else if (status == 'Done') {
+                state.doneTaskItems.splice(Number(action.payload.index1), 1)
+            // }
 
             state.taskItems = [...state.toDOTaskItems, ...state.doingTaskItems, ...state.doneTaskItems]
 
@@ -188,22 +224,52 @@ const taskSlice = createSlice({
             )
         },
 
-        doingChangeStatus(state, action) {
+        doingChangeStatusTodo(state, action) {
 
-            const newItem = action.payload
+            // const newItem = action.payload
+            // const status = newItem.status
+            // const indexx = newItem.indexx
+
             state.doingTaskItems.push({
-                title: newItem.title,
-                description: newItem.description,
-                subTask: newItem.subTask,
+                title: action.payload.title,
+                description: action.payload.description,
+                subTask: action.payload.subTask,
                 status: 'Doing',
             })
-            const status = newItem.status
-            const indexx = newItem.indexx
 
-            const c = status == 'Todo' ?
-                state.toDOTaskItems.splice(indexx, 1)
-                :
-                state.doneTaskItems.splice(indexx, 1)
+            // if (status == 'Todo') {
+                state.toDOTaskItems.splice(Number(action.payload.index1), 1)
+            // } else if (status == 'Done') {
+                // state.doneTaskItems.splice(indexx, 1)
+            // }
+
+            state.taskItems = [...state.toDOTaskItems, ...state.doingTaskItems, ...state.doneTaskItems]
+
+            setItemFunc(
+                state.taskItems.map((item) => item)
+                , state.toDOTaskItems.map((item) => item),
+                state.doingTaskItems.map((item) => item),
+                state.doneTaskItems.map((item) => item),
+            )
+        },
+        doingChangeStatusDone(state, action) {
+
+            // const newItem = action.payload
+            // const status = newItem.status
+            // const indexx = newItem.indexx
+
+            state.doingTaskItems.push({
+                title: action.payload.title,
+                description: action.payload.description,
+                subTask: action.payload.subTask,
+                status: 'Doing',
+            })
+
+            // if (status == 'Todo') {
+                // state.toDOTaskItems.splice(indexx, 1)
+            // } else if (status == 'Done') {
+                state.doneTaskItems.splice(Number(action.payload.index1), 1)
+            // }
 
             state.taskItems = [...state.toDOTaskItems, ...state.doingTaskItems, ...state.doneTaskItems]
 
@@ -215,22 +281,52 @@ const taskSlice = createSlice({
             )
         },
 
-        doneChangeStatus(state, action) {
+        doneChangeStatusTodo(state, action) {
 
-            const newItem = action.payload
+            // const newItem = action.payload
+            // const status = newItem.status
+            // const indexx = newItem.indexx
+
             state.doneTaskItems.push({
-                title: newItem.title,
-                description: newItem.description,
-                subTask: newItem.subTask,
+                title: action.payload.title,
+                description: action.payload.description,
+                subTask: action.payload.subTask,
                 status: 'Done',
             })
-            const status = newItem.status
-            const indexx = newItem.indexx
 
-            const c = status == 'Todo' ?
-                state.toDOTaskItems.splice(indexx, 1)
-                :
-                state.doingTaskItems.splice(indexx, 1)
+            // if (status == 'Todo') {
+                state.toDOTaskItems.splice(Number(action.payload.index1), 1)
+            // } else if (status == 'Doing') {
+                // state.doingTaskItems.splice(indexx, 1)
+            // }
+
+            state.taskItems = [...state.toDOTaskItems, ...state.doingTaskItems, ...state.doneTaskItems]
+
+            setItemFunc(
+                state.taskItems.map((item) => item)
+                , state.toDOTaskItems.map((item) => item),
+                state.doingTaskItems.map((item) => item),
+                state.doneTaskItems.map((item) => item),
+            )
+        },
+        doneChangeStatusDoing(state, action) {
+
+            // const newItem = action.payload
+            // const status = newItem.status
+            // const indexx = newItem.indexx
+
+            state.doneTaskItems.push({
+                title: action.payload.title,
+                description: action.payload.description,
+                subTask: action.payload.subTask,
+                status: 'Done',
+            })
+
+            // if (status == 'Todo') {
+                // state.toDOTaskItems.splice(indexx, 1)
+            // } else if (status == 'Doing') {
+                state.doingTaskItems.splice(Number(action.payload.index1), 1)
+            // }
 
             state.taskItems = [...state.toDOTaskItems, ...state.doingTaskItems, ...state.doneTaskItems]
 

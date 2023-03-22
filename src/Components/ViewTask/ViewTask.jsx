@@ -5,35 +5,11 @@ import SubTaskCheckBox from '../Inputs/subTaskCheckBox';
 import { Icon } from '@iconify/react';
 import overflowMenuVertical from '@iconify/icons-carbon/overflow-menu-vertical';
 
-import { taskActions } from '../../Store/taskSlice';
-import { useDispatch } from 'react-redux';
+import ToDoDropDown from './ToDoDropDown/ToDoDropDown';
+import DoingDropDown from './DoingDropDown/DoingDropDown';
+import DoneDropDown from './DoneDropDown/DoneDropDown';
 
 const ViewTask = ({ index1, closeModal, title, description, subTask, status, checkedSubTaskNum }) => {
-
-    const [status1, setStatus1] = useState(status)
-
-    const dispatch = useDispatch()
-
-    const changeStatus = (e) => {
-        const statuss = e.target.value
-        if (statuss == 'Todo' ) {
-            dispatch(taskActions.toDoChangeStatus({
-                title, description, subTask, status,
-                index1
-            }))
-        } else if (statuss == 'Doing') {
-            dispatch(taskActions.doingChangeStatus({
-                title, description, subTask, status,
-                index1
-            }))
-        } else if (statuss == 'Done') {
-            dispatch(taskActions.doneChangeStatus({
-                title, description, subTask, status,
-                index1
-            }))
-        }
-    }
-  
 
     return (
         <div className='fixed z-10 left-0 top-0 w-full h-full'>
@@ -66,67 +42,18 @@ const ViewTask = ({ index1, closeModal, title, description, subTask, status, che
                         )
                     })
                 }
-                {/* {
-
-                    status == 'Todo' ?
-                        <div>
-                            <button onClick={doingChangeStatus}>doingchangeStatus</button>
-                            <button onClick={doneChangeStatus}>doneChangeStatus</button>
-                        </div>
-                        :
-                        status == 'Doing' ?
-                            <div>
-                                <button onClick={toDoChangeStatus}>toDochangeStatus</button>
-                                <button onClick={doneChangeStatus}>doneChangeStatus</button>
-
-                            </div>
-                            :
-                            <div>
-                                <button onClick={toDoChangeStatus}>toDochangeStatus</button>
-                                <button onClick={doingChangeStatus}>doingchangeStatus</button>
-                            </div>
-                } */}
 
                 <label className='block text-xs mt-[15px] mb-1'>Status</label>
                 {
                     status == 'Todo' ?
-
-                        (
-
-                            <select
-                                // value={status1}
-                                onChange={changeStatus}
-                                className='text-xs pl-3 h-[30px] cursor-pointer w-full rounded-[5px] bg-gray-800 border-2 border-gray-700 text-gray-400'>
-                                <option value="Todo">Todo</option>
-                                <option value="Doing">Doing</option>
-                                <option value="Done">Done</option>
-                            </select>
-                        )
+                        <ToDoDropDown index1={index1} title={title} description={description} subTask={subTask} />
                         :
                         status == 'Doing' ?
-                            (
-                                <select
-                                    // value={status1}
-                                    onChange={changeStatus}
-                                    className='text-xs pl-3 h-[30px] cursor-pointer w-full rounded-[5px] bg-gray-800 border-2 border-gray-700 text-gray-400'>
-                                    <option value="Doing">Doing</option>
-                                    <option value="Todo">Todo</option>
-                                    <option value="Done">Done</option>
-                                </select>
-                            )
+                            <DoingDropDown index1={index1} title={title} description={description} subTask={subTask} />
                             :
-                            (
-                                <select
-                                    // value={status1}
-                                    onChange={changeStatus}
-                                    className='text-xs pl-3 h-[30px] cursor-pointer w-full rounded-[5px] bg-gray-800 border-2 border-gray-700 text-gray-400'>
-                                    <option value="Done">Done</option>
-                                    <option value="Todo">Todo</option>
-                                    <option value="Doing">Doing</option>
-                                </select>
-                            )
-
+                            <DoneDropDown index1={index1} title={title} description={description} subTask={subTask} />
                 }
+
 
             </div>
 
