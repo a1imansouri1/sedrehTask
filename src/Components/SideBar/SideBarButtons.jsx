@@ -5,10 +5,10 @@ import spaceDashboardRounded from '@iconify/icons-material-symbols/space-dashboa
 const SideBarButtons = ({ name }) => {
     return (
         <div
-            className="w-11/12 p-2.5 my-2 flex items-center rounded-r-full duration-300 cursor-pointer hover:bg-violet-500 text-white"
+            className="w-11/12 p-2.5 my-2 flex items-center rounded-r-full cursor-pointer hover:bg-violet-500 hover:text-gray-200 dark:text-gray-200"
         >
-            < Icon icon={spaceDashboardRounded} color="white" />
-            <span className="text-[15px] ml-4 text-gray-200 font-bold">{name}</span>
+            < Icon icon={spaceDashboardRounded} className='dark:text-white' />
+            <span className="text-[15px] ml-4 font-bold">{name}</span>
         </div>
     )
 }

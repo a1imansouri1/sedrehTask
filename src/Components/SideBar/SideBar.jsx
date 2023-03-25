@@ -5,15 +5,19 @@ import { Icon } from '@iconify/react';
 import threeLineVertical from '@iconify/icons-akar-icons/three-line-vertical';
 import lightMode from '@iconify/icons-material-symbols/light-mode';
 import toggleOn from '@iconify/icons-material-symbols/toggle-on';
+import toggleOff from '@iconify/icons-material-symbols/toggle-off';
 import moonFill from '@iconify/icons-akar-icons/moon-fill';
 
 import { NavLink, Link, useNavigate } from 'react-router-dom'
+import useDarkMode from '../../Hook/useDarkMode';
 
 const SideBar = () => {
 
     const menuRef = useRef(null);
     const sideBarRef = useRef(null);
     const toggleMenu = () => menuRef.current.classList.toggle('show_menu')
+
+    const [colorTheme, setTheme] = useDarkMode()
 
     const navLinks = [
         {
@@ -42,20 +46,20 @@ const SideBar = () => {
 
 
         <div
-            className="sidebar border-r-2 border-r-violet-300  fixed top-0 bottom-0 lg:left-0 pl-0 p-2 w-2/12 overflow-y-auto text-center bg-gray-800"
+            className="sidebar  bg-white border-r-2 border-r-violet-300  fixed top-0 bottom-0 lg:left-0 pl-0 p-2 w-2/12 overflow-y-auto text-center dark:bg-gray-800"
             ref={sideBarRef}
         >
 
             <div>
                 <div className="p-2.5 mt-8 flex items-center">
                     <Icon icon={threeLineVertical} color="#8b5cf6" height='30' />
-                    <h1 className="text-2xl font-bold text-gray-200 ml-3">kanban</h1>
+                    <h1 className="text-2xl font-bold dark:text-gray-200 ml-3">kanban</h1>
                 </div>
             </div>
 
             <div>
                 <div className="mt-10 flex items-center">
-                    <h2 className="text-[15px] text-gray-200 ml-3">ALL BOARDS (8)</h2>
+                    <h2 className="text-[15px] dark:text-gray-200 ml-3">ALL BOARDS (8)</h2>
                 </div>
             </div>
 
@@ -73,15 +77,20 @@ const SideBar = () => {
 
                 </div>
             </div>
-
-            <div className='flex w-full gap-[30px] justify-center items-center'>
-                <Icon icon={lightMode} color="white" />
-                <Icon icon={toggleOn} color="rgb(139 92 246)" height='25px' />
-                <Icon icon={moonFill} color="white" />
-            </div>
-
-
-
+            {
+                colorTheme === "dark" ?
+                    <div className='flex ml-2 rounded-[5px] gap-[30px] justify-center items-center bg-violet-500 mt-[250px]'>
+                        <Icon icon={lightMode} color="#FBBF24" />
+                        <Icon onClick={() => setTheme(colorTheme)} icon={toggleOff} height='30px' color='white' className='cursor-pointer' />
+                        <Icon icon={moonFill} color="white" />
+                    </div>
+                    :
+                    <div className='flex ml-2 rounded-[5px] gap-[30px] justify-center items-center bg-stone-900 mt-[250px]'>
+                        <Icon icon={lightMode} color='white' />
+                        <Icon onClick={() => setTheme(colorTheme)} icon={toggleOn} color="white" height='30px' className='cursor-pointer' />
+                        <Icon icon={moonFill} color="#FBBF24" />
+                    </div>
+            }
         </div>
     )
 }

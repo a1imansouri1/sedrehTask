@@ -36,7 +36,7 @@ const SubTaskCheckBox = ({ status, index1, index, subTaskStatusKeyValue, subTask
     }
 
     return (
-        < div className='mb-2 flex gap-1 items-center p-3 box-border rounded-[10px] border-none bg-gray-900'>
+        < div className='mb-2 flex gap-1 items-center p-3 box-border rounded-[10px] border-none dark:bg-gray-900 bg-blue-200'>
             {
                 status == 'Todo' ?
                     (!subTaskStatusKeyValue ?
@@ -47,7 +47,7 @@ const SubTaskCheckBox = ({ status, index1, index, subTaskStatusKeyValue, subTask
                         </div>
                         :
                         <div onClick={notCheckedTodo} className='flex gap-[10px] cursor-pointer'>
-                            <Icon icon={checkBox} color="#8b5cf6" />
+                            <Icon icon={checkBox} className='dark:text-violet-500 text-violet-700' />
                             <p className='text-[10px] line-through text-gray-400'> {subTaskKeyValue}</p>
                         </div>)
                     :
@@ -61,7 +61,7 @@ const SubTaskCheckBox = ({ status, index1, index, subTaskStatusKeyValue, subTask
                                 </div>
                                 :
                                 <div onClick={notCheckedDoing} className='flex gap-[10px] cursor-pointer'>
-                                    <Icon icon={checkBox} color="#8b5cf6" />
+                                    <Icon icon={checkBox} className='dark:text-violet-500 text-violet-700' />
                                     <p className='text-[10px] line-through text-gray-400'> {subTaskKeyValue}</p>
                                 </div>)
                         )
@@ -75,7 +75,7 @@ const SubTaskCheckBox = ({ status, index1, index, subTaskStatusKeyValue, subTask
                                 </div>
                                 :
                                 <div onClick={notCheckedDone} className='flex gap-[10px] cursor-pointer'>
-                                    <Icon icon={checkBox} color="#8b5cf6" />
+                                    <Icon icon={checkBox} className='dark:text-violet-500 text-violet-700' />
                                     <p className='text-[10px] line-through text-gray-400'> {subTaskKeyValue}</p>
                                 </div>)
                         )

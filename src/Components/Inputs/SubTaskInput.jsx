@@ -16,7 +16,7 @@ const SubTaskInput = ({ subTask, setSubTask, index, removeNewSubTask }) => {
     return (
         <div className='flex items-center'>
             <input
-                className='mb-1 h-[30px] pl-4 w-full text-xs leading-5 bg-gray-800 rounded-[5px] border-2 border-gray-700'
+                className='mb-1 h-[30px] pl-4 w-full text-xs leading-5 bg-blue-200 dark:bg-gray-800 rounded-[5px] border-2 dark:border-gray-700'
                 type="text" placeHolder='e.g. Make coffee'
                 // value={subTask.subTaskKey}
                 name='subTaskKey'
@@ -24,7 +24,7 @@ const SubTaskInput = ({ subTask, setSubTask, index, removeNewSubTask }) => {
                     subTaskChange(e, index)
                 }}
             />
-            <Icon onClick={removeNewSubTask} icon={closeIcon} color='rgb(156 163 175)' className='ml-1.5 cursor-pointer' />
+            <Icon onClick={removeNewSubTask} icon={closeIcon} className='ml-1.5 cursor-pointer dark:text-gray-500' />
 
         </div>
     )

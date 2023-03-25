@@ -12,7 +12,7 @@ const Layout = ({ title }) => {
 
       <SideBar />
 
-      <div className='h-full w-10/12 float-right bg-stone-900 text-white'>
+      <div className='h-full w-10/12 float-right dark:text-white'>
         <Routers />
       </div>
 

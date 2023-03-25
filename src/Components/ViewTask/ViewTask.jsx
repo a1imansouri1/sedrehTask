@@ -17,7 +17,7 @@ const ViewTask = ({ index1, closeModal, title, description, subTask, status, che
             <div className='w-full h-full' onClick={closeModal}>
             </div>
 
-            <div className='absolute w-[400px] top-[150px] left-[500px] p-5 box-border rounded-[10px] border-none bg-gray-800'>
+            <div className='absolute w-[400px] top-[150px] left-[500px] p-5 box-border rounded-[10px] border-none dark:bg-gray-800 bg-blue-100'>
                 <div className='flex justify-between'>
                     <h1 className='text-left font-bold mb-[20px]'>
                         {title}
@@ -25,7 +25,7 @@ const ViewTask = ({ index1, closeModal, title, description, subTask, status, che
                     <Icon icon={overflowMenuVertical} color="rgb(148 163 184)" height='25' />
                 </div>
 
-                <p className='text-[12px]  text-gray-400'>
+                <p className='text-[12px]  dark:text-gray-400'>
                     {description}
                 </p>
 

@@ -24,7 +24,7 @@ const DoingDropDown = ({ index1, title, description, subTask }) => {
 
     <select
       onChange={changeStatus}
-      className='text-xs pl-3 h-[30px] cursor-pointer w-full rounded-[5px] bg-gray-800 border-2 border-gray-700 text-gray-400'>
+      className='text-xs pl-3 h-[30px] cursor-pointer w-full rounded-[5px] dark:bg-gray-800 bg-blue-200 border-2 dark:border-gray-700 dark:text-gray-400'>
       <option value="Doing">Doing</option>
       <option value="Todo">Todo</option>
       <option value="Done">Done</option>

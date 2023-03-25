@@ -40,7 +40,7 @@ const AddNewTask = ({ closeModal }) => {
             <div className='w-full h-full' onClick={closeModal}>
             </div>
 
-            <div className='absolute w-[400px] top-[150px] left-[500px] p-5 box-border rounded-[10px] border-none bg-gray-800'>
+            <div className='absolute w-[400px] top-[150px] left-[500px] p-5 box-border rounded-[10px] border-none bg-blue-100 dark:bg-gray-800'>
 
                 <h1 className='text-left font-bold mb-[10px]'>Add New Task</h1>
 
@@ -51,7 +51,7 @@ const AddNewTask = ({ closeModal }) => {
                     value={description}
                     onChange={e => setDescription(e.target.value)}
                     placeholder="e.g. It's always good to take a break. This 15 minutes break will recharge the batteries a little"
-                    className='text-xs leading-5 p-4 rounded-[5px] w-full bg-gray-800 border-2 border-gray-700'
+                    className='text-xs leading-5 p-4 rounded-[5px] w-full border-2 bg-blue-200 dark:bg-gray-800 dark:border-gray-700'
                 >
                 </textarea>
 
@@ -73,7 +73,7 @@ const AddNewTask = ({ closeModal }) => {
                 <select
                     value={status}
                     onChange={e => setStatus(e.target.value)}
-                    id='status' className='text-xs pl-3 h-[30px] cursor-pointer w-full rounded-[5px] bg-gray-800 border-2 border-gray-700 text-gray-400'>
+                    id='status' className='text-xs pl-3 h-[30px] cursor-pointer w-full rounded-[5px] bg-blue-200 dark:bg-gray-800 border-2 dark:border-gray-700 dark:text-gray-400'>
                     <option value="Todo">Todo</option>
                     <option value="Doing">Doing</option>
                     <option value="Done">Done</option>
