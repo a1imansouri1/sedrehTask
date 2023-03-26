@@ -2,7 +2,6 @@ import React from 'react'
 import Status from '../../Status/Status'
 import Task from '../../Task/Task'
 import { useSelector } from 'react-redux'
-import shortid from 'shortid';
 
 
 const DoingTaskItems = () => {

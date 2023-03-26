@@ -3,8 +3,12 @@ import React from 'react'
 import Header from '../Header/Header'
 import SideBar from '../SideBar/SideBar'
 import Routers from '../../routes/Routers'
+import useOpenSideBar from '../../Hook/useOpenSideBar'
 
 const Layout = ({ title }) => {
+
+  useOpenSideBar()
+  
   return (
     <div>
       {/* <Header title='Platform Launch' /> */}
